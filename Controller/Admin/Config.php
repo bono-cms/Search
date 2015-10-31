@@ -24,7 +24,7 @@ final class Config extends AbstractConfigController
 		$this->view->getPluginBag()
 				   ->appendScript($this->getWithAssetPath('/admin/config.js'));
 
-		// Override defauul breadcrumbs collection
+		// Override default breadcrumbs collection
 		$this->view->getBreadcrumbBag()->add(array(
 			array(
 				'name' => 'Search',

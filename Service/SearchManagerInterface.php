@@ -13,28 +13,28 @@ namespace Search\Service;
 
 interface SearchManagerInterface
 {
-	/**
-	 * Overrides maximal description length
-	 * 
-	 * @param integer $maxDescriptionLength
-	 * @return void
-	 */
-	public function setMaxDescriptionLength($maxDescriptionLength);
+    /**
+     * Overrides maximal description length
+     * 
+     * @param integer $maxDescriptionLength
+     * @return void
+     */
+    public function setMaxDescriptionLength($maxDescriptionLength);
 
-	/**
-	 * Queries all attached mappers
-	 * 
-	 * @param string $data Query data
-	 * @param integer $page Current page
-	 * @param integer $itemsPerPage Per page count
-	 * @return array
-	 */
-	public function findByKeyword($keyword, $page, $itemsPerPage);
+    /**
+     * Queries all attached mappers
+     * 
+     * @param string $data Query data
+     * @param integer $page Current page
+     * @param integer $itemsPerPage Per page count
+     * @return array
+     */
+    public function findByKeyword($keyword, $page, $itemsPerPage);
 
-	/**
-	 * Returns prepared paginator's instance
-	 * 
-	 * @return \Krystal\Paginate\Paginator
-	 */
-	public function getPaginator();
+    /**
+     * Returns prepared paginator's instance
+     * 
+     * @return \Krystal\Paginate\Paginator
+     */
+    public function getPaginator();
 }

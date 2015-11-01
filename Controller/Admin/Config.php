@@ -16,30 +16,30 @@ use Krystal\Validate\Pattern;
 
 final class Config extends AbstractConfigController
 {
-	/**
-	 * {@inheritDoc}
-	 */
-	protected function loadPlugins()
-	{
-		$this->view->getPluginBag()
-				   ->appendScript($this->getWithAssetPath('/admin/config.js'));
+    /**
+     * {@inheritDoc}
+     */
+    protected function loadPlugins()
+    {
+        $this->view->getPluginBag()
+                   ->appendScript($this->getWithAssetPath('/admin/config.js'));
 
-		// Override default breadcrumbs collection
-		$this->view->getBreadcrumbBag()->add(array(
-			array(
-				'name' => 'Search',
-				'link' => '#'
-			)
-		));
-	}
+        // Override default breadcrumbs collection
+        $this->view->getBreadcrumbBag()->add(array(
+            array(
+                'name' => 'Search',
+                'link' => '#'
+            )
+        ));
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected function getValidationRules()
-	{
-		return array(
-			'per_page_count' => new Pattern\PerPageCount(),
-		);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    protected function getValidationRules()
+    {
+        return array(
+            'per_page_count' => new Pattern\PerPageCount(),
+        );
+    }
 }

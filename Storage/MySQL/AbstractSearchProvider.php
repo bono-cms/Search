@@ -16,37 +16,37 @@ use Krystal\Stdlib\ArrayUtils;
 
 abstract class AbstractSearchProvider extends AbstractMapper
 {
-	/**
-	 * Returns default columns which all tables must contain
-	 * 
-	 * @return array
-	 */
-	final protected function getDefaultColumns()
-	{
-		return array(
-			'id',
-			'web_page_id',
-			'lang_id',
-			'title'
-		);
-	}
+    /**
+     * Returns default columns which all tables must contain
+     * 
+     * @return array
+     */
+    final protected function getDefaultColumns()
+    {
+        return array(
+            'id',
+            'web_page_id',
+            'lang_id',
+            'title'
+        );
+    }
 
-	/**
-	 * Returns selectable columns
-	 * 
-	 * @param array $additional
-	 * @return array
-	 */
-	final protected function getWithDefaults(array $additional)
-	{
-		$columns = $this->getDefaultColumns();
+    /**
+     * Returns selectable columns
+     * 
+     * @param array $additional
+     * @return array
+     */
+    final protected function getWithDefaults(array $additional)
+    {
+        $columns = $this->getDefaultColumns();
 
-		if (!ArrayUtils::isSequential($additional)) {
-			array_push($columns, $additional);
-		} else {
-			$columns = array_merge($columns, $additional);
-		}
+        if (!ArrayUtils::isSequential($additional)) {
+            array_push($columns, $additional);
+        } else {
+            $columns = array_merge($columns, $additional);
+        }
 
-		return $columns;
-	}
+        return $columns;
+    }
 }

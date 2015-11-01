@@ -13,51 +13,51 @@ namespace Search\Service;
 
 final class SiteService implements SiteServiceInterface
 {
-	/**
-	 * Target keyword
-	 * 
-	 * @var string
-	 */
-	private $keyword;
+    /**
+     * Target keyword
+     * 
+     * @var string
+     */
+    private $keyword;
 
-	/**
-	 * Defines search keyword
-	 * 
-	 * @param string $keyword
-	 * @return void
-	 */
-	public function setKeyword($keyword)
-	{
-		$this->keyword = $keyword;
-	}
+    /**
+     * Defines search keyword
+     * 
+     * @param string $keyword
+     * @return void
+     */
+    public function setKeyword($keyword)
+    {
+        $this->keyword = $keyword;
+    }
 
-	/**
-	 * Returns search keyword
-	 * 
-	 * @return string
-	 */
-	public function getKeyword()
-	{
-		return $this->keyword;
-	}
+    /**
+     * Returns search keyword
+     * 
+     * @return string
+     */
+    public function getKeyword()
+    {
+        return $this->keyword;
+    }
 
-	/**
-	 * Returns URL where requests should be send to
-	 * 
-	 * @return string
-	 */
-	public function getUrl()
-	{
-		return '/search/';
-	}
+    /**
+     * Returns URL where requests should be send to
+     * 
+     * @return string
+     */
+    public function getUrl()
+    {
+        return '/search/';
+    }
 
-	/**
-	 * Returns element name that must contain query data
-	 * 
-	 * @return string
-	 */
-	public function getElementName()
-	{
-		return 'query';
-	}
+    /**
+     * Returns element name that must contain query data
+     * 
+     * @return string
+     */
+    public function getElementName()
+    {
+        return 'query';
+    }
 }

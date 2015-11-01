@@ -10,18 +10,18 @@
  */
 
 return array(
-	
-	'/admin/module/search' => array(
-		'controller' => 'Admin:Config@indexAction'
-	),
+    
+    '/admin/module/search' => array(
+        'controller' => 'Admin:Config@indexAction'
+    ),
 
-	'/admin/module/search/save.ajax' => array(
-		'controller' => 'Admin:Config@saveAction',
-		'disallow' => array('guest')
-	),
-	
-	// Site route itself
-	'/search/(:var)' => array(
-		'controller' => 'Search@searchAction'
-	)
+    '/admin/module/search/save.ajax' => array(
+        'controller' => 'Admin:Config@saveAction',
+        'disallow' => array('guest')
+    ),
+    
+    // Site route itself
+    '/search/(:var)' => array(
+        'controller' => 'Search@searchAction'
+    )
 );

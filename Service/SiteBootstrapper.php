@@ -16,29 +16,29 @@ use Krystal\Application\View\ViewManagerInterface;
 
 final class SiteBootstrapper implements SiteBootstrapperInterface
 {
-	/**
-	 * View manager whose state would be altered
-	 * 
-	 * @var \Krystal\Application\View\ViewManagerInterface
-	 */
-	private $view;
+    /**
+     * View manager whose state would be altered
+     * 
+     * @var \Krystal\Application\View\ViewManagerInterface
+     */
+    private $view;
 
-	/**
-	 * State initialization
-	 * 
-	 * @param \Krystal\Application\View\ViewManagerInterface $view
-	 * @return void
-	 */
-	public function __construct(ViewManagerInterface $view)
-	{
-		$this->view = $view;
-	}
+    /**
+     * State initialization
+     * 
+     * @param \Krystal\Application\View\ViewManagerInterface $view
+     * @return void
+     */
+    public function __construct(ViewManagerInterface $view)
+    {
+        $this->view = $view;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public function bootstrap()
-	{
-		$this->view->addVariable('search', new SiteService());
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function bootstrap()
+    {
+        $this->view->addVariable('search', new SiteService());
+    }
 }

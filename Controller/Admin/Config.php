@@ -22,15 +22,10 @@ final class Config extends AbstractConfigController
     protected function loadPlugins()
     {
         $this->view->getPluginBag()
-                   ->appendScript($this->getWithAssetPath('/admin/config.js'));
+                   ->appendScript('@Search/admin/config.js');
 
         // Override default breadcrumbs collection
-        $this->view->getBreadcrumbBag()->add(array(
-            array(
-                'name' => 'Search',
-                'link' => '#'
-            )
-        ));
+        $this->view->getBreadcrumbBag()->addOne('Search');
     }
 
     /**

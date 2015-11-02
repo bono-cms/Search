@@ -45,12 +45,10 @@ final class Search extends AbstractController
             $siteService->setKeyword($keyword);
 
             if ($formValidator->isValid()) {
-
                 $searchManager = $this->getModuleService('searchManager');
 
                 // Override maximal description's length
                 $searchManager->setMaxDescriptionLength($config->getMaxDescriptionLength());
-
                 $results = $searchManager->findByKeyword($keyword, $this->getPageNumber(), $config->getPerPageCount());
 
                 $paginator = $searchManager->getPaginator();
@@ -65,7 +63,6 @@ final class Search extends AbstractController
                 );
 
             } else {
-
                 // Template variables when we have errors
                 $vars = array(
                     'search' => $siteService,
@@ -75,9 +72,7 @@ final class Search extends AbstractController
             }
 
             return $this->view->render('search', $vars);
-
         } else {
-
             // No query key in $_GET? Well, then simply trigger 404
             return false;
         }
@@ -91,12 +86,7 @@ final class Search extends AbstractController
     private function loadPlugins()
     {
         $this->loadSitePlugins();
-        $this->view->getBreadcrumbBag()->add(array(
-            array(
-                'name' => $this->translator->translate('Search'),
-                'link' => '#'
-            )
-        ));
+        $this->view->getBreadcrumbBag()->addOne($this->translator->translate('Search'));
     }
 
     /**

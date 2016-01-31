@@ -32,7 +32,6 @@ final class Search extends AbstractController
         if ($this->request->hasQuery($key)) {
             $keyword = $this->request->getQuery($key);
 
-            $this->prepareValidator();
             $formValidator = $this->getValidator($this->request->getQuery());
 
             $this->loadPlugins();
@@ -86,7 +85,8 @@ final class Search extends AbstractController
     private function loadPlugins()
     {
         $this->loadSitePlugins();
-        $this->view->getBreadcrumbBag()->addOne($this->translator->translate('Search'));
+        $this->view->getBreadcrumbBag()
+                   ->addOne($this->translator->translate('Search'));
     }
 
     /**
@@ -139,6 +139,8 @@ final class Search extends AbstractController
      */
     private function getValidator(array $input)
     {
+        $this->validatorFactory->setRenderer(new MessagesOnlyRenderer());
+
         return $this->validatorFactory->build(array(
             'input' => array(
                 'source' => $input,
@@ -147,16 +149,6 @@ final class Search extends AbstractController
                 )
             )
         ));
-    }
-
-    /**
-     * Prepares validator for this specific controller
-     * 
-     * @return void
-     */
-    private function prepareValidator()
-    {
-        $this->validatorFactory->setRenderer(new MessagesOnlyRenderer());
     }
 
     /**

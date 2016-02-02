@@ -4,7 +4,7 @@
   array (
     'name' => 'Search',
     'url' => '/admin/module/search',
-    'icon' => '/module/Search/Assets/search.png',
+    'icon' => 'fa fa-search fa-5x',
     'order' => 1,
     'description' => 'Search module allows you to easily enable search mechanism across another modules',
   ),

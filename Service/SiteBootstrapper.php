@@ -11,29 +11,10 @@
 
 namespace Search\Service;
 
-use Cms\Service\SiteBootstrapperInterface;
-use Krystal\Application\View\ViewManagerInterface;
+use Cms\Service\AbstractSiteBootstrapper;
 
-final class SiteBootstrapper implements SiteBootstrapperInterface
+final class SiteBootstrapper extends AbstractSiteBootstrapper
 {
-    /**
-     * View manager whose state would be altered
-     * 
-     * @var \Krystal\Application\View\ViewManagerInterface
-     */
-    private $view;
-
-    /**
-     * State initialization
-     * 
-     * @param \Krystal\Application\View\ViewManagerInterface $view
-     * @return void
-     */
-    public function __construct(ViewManagerInterface $view)
-    {
-        $this->view = $view;
-    }
-
     /**
      * {@inheritDoc}
      */

@@ -3,7 +3,7 @@
   'module' => 
   array (
     'name' => 'Search',
-    'url' => '/admin/module/search',
+    'route' => 'Search:Admin:Config@indexAction',
     'icon' => 'fa fa-search fa-5x',
     'order' => 1,
     'description' => 'Search module allows you to easily enable search mechanism across another modules',

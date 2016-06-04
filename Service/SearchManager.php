@@ -85,12 +85,12 @@ final class SearchManager extends AbstractManager implements SearchManagerInterf
     protected function toEntity(array $result)
     {
         $entity = new VirtualEntity();
-        $entity->setLangId($result['lang_id'])
-               ->setWebPageId($result['web_page_id'])
-               ->setTitle($this->highlight($result['title']))
-               ->setContent($this->highlight($this->trimContent($result['content'])))
+        $entity->setLangId($result['lang_id'], VirtualEntity::FILTER_INT)
+               ->setWebPageId($result['web_page_id'], VirtualEntity::FILTER_INT)
+               ->setTitle($this->highlight($result['title'])) // How to filter it?
+               ->setContent($this->highlight($this->trimContent($result['content']))) // And this one?
                ->setUrl($this->webPageManager->getUrl($entity->getWebPageId(), $entity->getLangId()));
-        
+
         return $entity;
     }
 

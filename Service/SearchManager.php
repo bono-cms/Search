@@ -15,7 +15,7 @@ use Cms\Service\AbstractManager;
 use Cms\Service\WebPageManagerInterface;
 use Search\Storage\SearchMapperInterface;
 use Krystal\Stdlib\VirtualEntity;
-use Krystal\Text\TextTrimmer;
+use Krystal\Text\TextUtils;
 
 final class SearchManager extends AbstractManager implements SearchManagerInterface
 {
@@ -113,8 +113,7 @@ final class SearchManager extends AbstractManager implements SearchManagerInterf
      */
     private function trimContent($content)
     {
-        $trimmer = new TextTrimmer();
-        return $trimmer->trim($content, $this->maxDescriptionLength);
+        return TextUtils::trim($content, $this->maxDescriptionLength);
     }
 
     /**

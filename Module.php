@@ -20,6 +20,7 @@ final class Module extends AbstractCmsModule
     /**
      * Returns mappers that should be attached to the search
      * 
+     * @param array $collection
      * @return array
      */
     private function grabMappers(array $collection)
@@ -27,8 +28,8 @@ final class Module extends AbstractCmsModule
         $result = array();
 
         foreach ($collection as $module => $mappers) {
+            // Append only from loaded modules
             if ($this->moduleManager->isLoaded($module)) {
-
                 foreach ($mappers as $mapper) {
                     array_push($result, $mapper);
                 }

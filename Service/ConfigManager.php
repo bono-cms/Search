@@ -11,18 +11,20 @@
 
 namespace Search\Service;
 
-use Krystal\Config\File\AbstractConfigManager;
-use Krystal\Security\Filter;
+use Krystal\Config\ConfigModuleService;
+use Krystal\Stdlib\VirtualEntity;
 
-final class ConfigManager extends AbstractConfigManager
+final class ConfigManager extends ConfigModuleService
 {
     /**
      * {@inheritDoc}
      */
-    protected function populate()
+    public function getEntity()
     {
-        $entity = $this->getEntity();
-        $entity->setPerPageCount((int) $this->get('per_page_count', 5))
-               ->setMaxDescriptionLength((int) $this->get('max_description_length', 100));
+        $entity = new VirtualEntity;
+        $entity->setPerPageCount($this->get('per_page_count', 5), VirtualEntity::FILTER_INT)
+               ->setMaxDescriptionLength($this->get('max_description_length', 100), VirtualEntity::FILTER_INT);
+
+        return $entity;
     }
 }

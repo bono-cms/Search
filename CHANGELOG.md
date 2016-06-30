@@ -4,6 +4,7 @@ CHANGELOG
 1.2
 ---
 
+ * Changed the way of storing configuration data. Since now its stored in the database 
  * Changed module icon
  * Improved internals
 

@@ -77,7 +77,7 @@ final class Module extends AbstractCmsModule
 
         return array(
             'siteService' => new SiteService(),
-            'configManager' => $this->getConfigService(),
+            'configManager' => $this->createConfigService(),
             'searchManager' => new SearchManager($searchMapper, $this->getWebPageManager())
         );
     }

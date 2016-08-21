@@ -88,10 +88,24 @@ final class SearchManager extends AbstractManager implements SearchManagerInterf
         $entity->setLangId($result['lang_id'], VirtualEntity::FILTER_INT)
                ->setWebPageId($result['web_page_id'], VirtualEntity::FILTER_INT)
                ->setTitle($this->highlight($result['title'])) // How to filter it?
-               ->setContent($this->highlight($this->trimContent($result['content']))) // And this one?
+               ->setContent($this->filterContent($result['content'])) // And this one?
                ->setUrl($this->webPageManager->getUrl($entity->getWebPageId(), $entity->getLangId()));
 
         return $entity;
+    }
+
+    /**
+     * Prepares content string for safe displaying
+     * 
+     * @param string $content
+     * @return string
+     */
+    private function filterContent($content)
+    {
+        $content = $this->highlight($this->trimContent($content));
+        $content = strip_tags($content, '<b><em>');
+
+        return $content;
     }
 
     /**

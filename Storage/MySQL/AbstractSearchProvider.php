@@ -40,13 +40,6 @@ abstract class AbstractSearchProvider extends AbstractMapper
     final protected function getWithDefaults(array $additional)
     {
         $columns = $this->getDefaultColumns();
-
-        if (!ArrayUtils::isSequential($additional)) {
-            array_push($columns, $additional);
-        } else {
-            $columns = array_merge($columns, $additional);
-        }
-
-        return $columns;
+        return array_merge($columns, $additional);
     }
 }

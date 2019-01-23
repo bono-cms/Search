@@ -29,10 +29,10 @@ final class SearchMapper extends AbstractMapper implements SearchMapperInterface
     /**
      * Appends a searchable mapper
      * 
-     * @param \Search\Storage\MySQL\AbstractSearchProvider
+     * @param \Cms\Storage\MySQL\AbstractMapper
      * @return void
      */
-    public function append(AbstractSearchProvider $mapper)
+    public function append(AbstractMapper $mapper)
     {
         array_push($this->mappers, $mapper);
     }

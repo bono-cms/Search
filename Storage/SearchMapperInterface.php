@@ -11,17 +11,17 @@
 
 namespace Search\Storage;
 
-use Search\Storage\MySQL\AbstractSearchProvider;
+use Cms\Storage\MySQL\AbstractMapper;
 
 interface SearchMapperInterface
 {
     /**
      * Appends a searchable mapper
      * 
-     * @param \Search\Storage\MySQL\AbstractSearchProvider
+     * @param \Cms\Storage\MySQL\AbstractMapper
      * @return void
      */
-    public function append(AbstractSearchProvider $mapper);
+    public function append(AbstractMapper $mapper);
 
     /**
      * Queries by a keyword in all attached mappers

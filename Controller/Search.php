@@ -70,6 +70,9 @@ final class Search extends AbstractController
                 );
             }
 
+            // Append languages
+            $vars['languages'] = $this->getService('Cms', 'languageManager')->fetchAll(true);
+
             return $this->view->render('search', $vars);
         } else {
             // No query key in $_GET? Well, then simply trigger 404

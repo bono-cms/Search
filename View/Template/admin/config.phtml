@@ -1,35 +1,35 @@
-<?php defined('KRYSTAL') or die; ?>
 <?php
 
 use Krystal\Form\Element;
+defined('KRYSTAL') or die;
 
 ?>
-<form>
-	<div class="well">
-		<div class="form-group">
-			<label class="col-lg-2 control-label"><?php $this->show('Items per page to show'); ?></label>
-			<div class="col-lg-10">
-				<div class="input-group">
-                    <?php echo Element::number('config[per_page_count]', $config->getPerPageCount(), array('class' => 'form-control', 'min' => '1', 'required' => true)); ?>
-					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-				</div>
-				<span class="help-block"><?php $this->show('How many results do you want to display on site per page?'); ?></span>
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-lg-2 control-label"><?php $this->show('Maximal description length'); ?></label>
-			<div class="col-lg-10">
-				<div class="input-group">
-                    <?php echo Element::number('config[max_description_length]', $config->getMaxDescriptionLength(), array('class' => 'form-control', 'min' => '10')); ?>
-					<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-				</div>
-				<span class="help-block"><?php $this->show('Maximal length for description text when displaying results on site'); ?></span>
-			</div>
-		</div>
-	</div>
 
-	<button data-button="save" data-url="<?php echo $this->url('Search:Admin:Config@saveAction'); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save'); ?></button>
-	<button data-button="cancel" data-url="/admin" class="btn btn-default"><i class="glyphicon glyphicon-floppy-open"></i> <?php $this->show('Cancel'); ?></button>
+<form class="card" autocomplete="off">
+    <div class="form-group">
+        <label class="col-lg-2 control-label"><?php $this->show('Items per page to show'); ?></label>
+        <div class="col-lg-10">
+            <div class="input-group">
+                <?php echo Element::number('config[per_page_count]', $config->getPerPageCount(), array('class' => 'form-control', 'min' => '1', 'required' => true)); ?>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            </div>
+            <span class="help-block"><?php $this->show('How many results do you want to display on site per page?'); ?></span>
+        </div>
+    </div>
 
+    <div class="form-group">
+        <label class="col-lg-2 control-label"><?php $this->show('Maximal description length'); ?></label>
+        <div class="col-lg-10">
+            <div class="input-group">
+                <?php echo Element::number('config[max_description_length]', $config->getMaxDescriptionLength(), array('class' => 'form-control', 'min' => '10')); ?>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            </div>
+            <span class="help-block"><?php $this->show('Maximal length for description text when displaying results on site'); ?></span>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button data-button="save" data-url="<?php echo $this->url('Search:Admin:Config@saveAction'); ?>" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> <?php $this->show('Save'); ?></button>
+        <button data-button="cancel" data-url="/admin" class="btn btn-default"><i class="glyphicon glyphicon-floppy-open"></i> <?php $this->show('Cancel'); ?></button>
+    </div>
 </form>

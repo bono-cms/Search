@@ -117,9 +117,12 @@ final class Search extends AbstractController
      */
     private function getPage()
     {
+        $title = $this->translator->translate('Search results');
+
         $entity = new VirtualEntity();
-        $entity->setTitle($this->translator->translate('Search results'))
-             ->setMetaDescription(null);
+        $entity->setTitle($title)
+               ->setName($title)
+               ->setMetaDescription(null);
 
         return $entity;
     }

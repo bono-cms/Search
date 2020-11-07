@@ -10,7 +10,6 @@
  */
 
 return array(
-    
     '/%s/module/search' => array(
         'controller' => 'Admin:Config@indexAction'
     ),
@@ -19,9 +18,9 @@ return array(
         'controller' => 'Admin:Config@saveAction',
         'disallow' => array('guest')
     ),
-    
+
     // Site route itself
-    '/search/(:var)' => array(
+    '/search' => array(
         'controller' => 'Search@searchAction'
     )
 );

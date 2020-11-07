@@ -50,15 +50,12 @@ final class Search extends AbstractController
                 $searchManager->setMaxDescriptionLength($config->getMaxDescriptionLength());
                 $results = $searchManager->findByKeyword($keyword, $this->getPageNumber(), $config->getPerPageCount());
 
-                $paginator = $searchManager->getPaginator();
-                $this->tweakPaginator($paginator);
-
                 // Template variables
                 $vars = array(
                     'search' => $siteService,
                     'page' => $this->getPage(),
                     'results' => $results,
-                    'paginator' => $paginator
+                    'paginator' => $searchManager->getPaginator()
                 );
 
             } else {
@@ -155,21 +152,5 @@ final class Search extends AbstractController
                 )
             )
         ));
-    }
-
-    /**
-     * Tweaks paginator's instance
-     * 
-     * @param \Krystal\Paginate\PaginatorInterface $paginator
-     * @return void
-     */
-    private function tweakPaginator(PaginatorInterface $paginator)
-    {
-        $placeholder = '(:var)';
-
-        $url =  '/search/?'.$this->request->buildQuery(array('page' => $placeholder));
-        $url = str_replace(rawurlencode($placeholder), $placeholder, $url);
-
-        $paginator->setUrl($url);
     }
 }

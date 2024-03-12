@@ -81,7 +81,7 @@ final class SearchMapper extends AbstractMapper implements SearchMapperInterface
             // Comparing iteration against number of mappers, tells whether this iteration is last
             $last = $i == $amount;
 
-            // If we have more that one mapper, then we need to union results
+            // If we have more than one mapper, then we need to union results
             // And also, we should never append UNION in last iteration
             if ($amount > 1 && !$last) {
                 $qb->union();

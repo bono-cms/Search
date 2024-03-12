@@ -53,9 +53,11 @@ final class Module extends AbstractCmsModule
             'News' => array(
                 '/News/Storage/MySQL/SearchMapper'
             ),
+            /*
             'Shop' => array(
                 '/Shop/Storage/MySQL/SearchMapper'
             ),
+            */
             'Blog' => array(
                 '/Blog/Storage/MySQL/SearchMapper'
             ),

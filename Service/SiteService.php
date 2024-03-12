@@ -48,7 +48,7 @@ final class SiteService implements SiteServiceInterface
      */
     public function getUrl()
     {
-        return '/search/';
+        return '/search';
     }
 
     /**

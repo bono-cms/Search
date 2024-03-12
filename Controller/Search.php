@@ -30,7 +30,7 @@ final class Search extends AbstractController
         $key = 'query';
 
         if ($this->request->hasQuery($key)) {
-            $keyword = $this->request->getQuery($key);
+            $keyword = strip_tags($this->request->getQuery($key));
 
             $formValidator = $this->getValidator($this->request->getQuery());
 

@@ -62,7 +62,8 @@ final class OffcanvasWidget implements WidgetInterface
 
         $form = new NodeElement();
         $form->openTag('form')
-             ->addAttribute('action', '/search');
+             ->addAttribute('action', '/search')
+             ->finalize();
 
         $form->appendChild($input)
              ->closeTag();
@@ -87,7 +88,7 @@ final class OffcanvasWidget implements WidgetInterface
 
         $header = $translator->translate($this->options['header']);
         $body = $this->renderForm($translator->translate($this->options['placeholder']));
-
+        
         return $offcanvas->renderButton($this->options['text'], 'btn btn-primary') . PHP_EOL . $offcanvas->renderOffcanvas($header, $body);
     }
 }

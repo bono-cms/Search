@@ -194,27 +194,26 @@ final class ResponseWidget implements WidgetInterface
     public function render(DependencyInjectionContainerInterface $container, InputInterface $input)
     {
         $translator = $container->get('translator');
-
         $output = '';
 
         if (empty($this->errors)) {
             // Header text
-            $text = StringTemplate::template($this->options['messages']['results'], [
+            $text = StringTemplate::template($translator->translate($this->options['messages']['results']), [
                 'keyword' => $this->options['keyword'],
                 'count' => $this->options['count']
             ]);
 
-            $output .= $this->renderHeader($translator->translate($text));
+            $output .= $this->renderHeader($text);
         }
 
         if (!empty($this->results)) {
             $output .= $this->renderResults($this->results);
         } else {
-            $emptyText = StringTemplate::template($this->options['messages']['empty'], [
+            $emptyText = StringTemplate::template($translator->translate($this->options['messages']['empty']), [
                 'keyword' => $this->options['keyword']
             ]);
 
-            $output .= $this->renderEmpty($translator->translate($emptyText));
+            $output .= $this->renderEmpty($emptyText);
         }
 
         // Errors

@@ -76,7 +76,7 @@ final class OffcanvasWidget implements WidgetInterface
      * 
      * @param \Krystal\InstanceManager\DependencyInjectionContainerInterface $container
      * @param \Krystal\Application\InputInterface $input
-     * @return string
+     * @return array
      */
     public function render(DependencyInjectionContainerInterface $container, InputInterface $input)
     {
@@ -88,7 +88,10 @@ final class OffcanvasWidget implements WidgetInterface
 
         $header = $translator->translate($this->options['header']);
         $body = $this->renderForm($translator->translate($this->options['placeholder']));
-        
-        return $offcanvas->renderButton($this->options['text'], 'btn btn-primary') . PHP_EOL . $offcanvas->renderOffcanvas($header, $body);
+
+        return [
+            'button' => $offcanvas->renderButton($this->options['text'], 'btn btn-primary'),
+            'offcanvas' => $offcanvas->renderOffcanvas($header, $body)
+        ];
     }
 }

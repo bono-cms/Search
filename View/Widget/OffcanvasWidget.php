@@ -28,7 +28,8 @@ final class OffcanvasWidget implements WidgetInterface
         'text' => '<i class="bi bi-search"></i>',
         'placement' => 'top',
         'header' => 'Search on site',
-        'placeholder' => 'Type a keyword and press Enter'
+        'placeholder' => 'Type a keyword and press Enter',
+        'btnClass' => 'btn btn-primary'
     ];
 
     /**
@@ -90,7 +91,7 @@ final class OffcanvasWidget implements WidgetInterface
         $body = $this->renderForm($translator->translate($this->options['placeholder']));
 
         return [
-            'button' => $offcanvas->renderButton($this->options['text'], 'btn btn-primary'),
+            'button' => $offcanvas->renderButton($this->options['text'], $this->options['btnClass']),
             'offcanvas' => $offcanvas->renderOffcanvas($header, $body)
         ];
     }

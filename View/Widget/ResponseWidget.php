@@ -73,7 +73,7 @@ final class ResponseWidget implements WidgetInterface
     {
         $this->results = $results;
         $this->errors = $errors;
-        $this->options = array_merge($this->options, $options);
+        $this->options = array_replace_recursive($this->options, $options);
     }
 
     /**
@@ -148,12 +148,9 @@ final class ResponseWidget implements WidgetInterface
               ->setText($result->getTitle())
               ->closeTag();
 
-            $div = new NodeElement();
-            $div->openTag('div')
-                ->setText($result->getContent());
-
             $wrap->appendChild($a)
-                 ->appendChild($div);
+                 ->setText($result->getContent())
+                 ->closeTag();
 
             $content .= $wrap->render();
         }

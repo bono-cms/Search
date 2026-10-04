@@ -15,7 +15,6 @@ use Site\Controller\AbstractController;
 use Krystal\Stdlib\VirtualEntity;
 use Krystal\Validate\Pattern;
 use Krystal\Validate\Renderer\MessagesOnly as MessagesOnlyRenderer;
-use Krystal\Paginate\PaginatorInterface;
 
 final class Search extends AbstractController
 {
@@ -45,26 +44,27 @@ final class Search extends AbstractController
 
             if ($formValidator->isValid()) {
                 $searchManager = $this->getModuleService('searchManager');
+                $pageNumber = (int) $this->request->getQuery('page', 1);
 
                 // Override maximal description's length
                 $searchManager->setMaxDescriptionLength($config->getMaxDescriptionLength());
-                $results = $searchManager->findByKeyword($keyword, $this->getPageNumber(), $config->getPerPageCount());
+                $results = $searchManager->findByKeyword($keyword, $pageNumber, $config->getPerPageCount());
 
                 // Template variables
-                $vars = array(
+                $vars = [
                     'search' => $siteService,
                     'page' => $this->getPage(),
                     'results' => $results,
                     'paginator' => $searchManager->getPaginator()
-                );
+                ];
 
             } else {
                 // Template variables when we have errors
-                $vars = array(
+                $vars = [
                     'search' => $siteService,
                     'page' => $this->getPage(),
                     'errors' => $formValidator->getErrors()
-                );
+                ];
             }
 
             // Append languages
@@ -87,24 +87,6 @@ final class Search extends AbstractController
         $this->loadSitePlugins();
         $this->view->getBreadcrumbBag()
                    ->addOne($this->translator->translate('Search'));
-    }
-
-    /**
-     * Returns current page number
-     * 
-     * @return integer
-     */
-    private function getPageNumber()
-    {
-        // Default page number
-        $page = 1;
-
-        // Alter default page number if present
-        if ($this->request->hasQuery('page') && is_numeric($this->request->getQuery('page'))) {
-            $page = (int) $this->request->getQuery('page');
-        }
-
-        return $page;
     }
 
     /**
@@ -144,13 +126,13 @@ final class Search extends AbstractController
     {
         $this->validatorFactory->setRenderer(new MessagesOnlyRenderer());
 
-        return $this->validatorFactory->build(array(
-            'input' => array(
+        return $this->validatorFactory->build([
+            'input' => [
                 'source' => $input,
-                'definition' => array(
+                'definition' => [
                     'query' => new Pattern\Query()
-                )
-            )
-        ));
+                ]
+            ]
+        ]);
     }
 }

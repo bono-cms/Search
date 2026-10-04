@@ -31,8 +31,8 @@ final class Config extends AbstractConfigController
      */
     protected function getValidationRules()
     {
-        return array(
+        return [
             'per_page_count' => new Pattern\PerPageCount(),
-        );
+        ];
     }
 }

@@ -25,7 +25,7 @@ final class Module extends AbstractCmsModule
      */
     private function grabMappers(array $collection)
     {
-        $result = array();
+        $result = [];
 
         foreach ($collection as $module => $mappers) {
             // Append only from loaded modules
@@ -46,25 +46,25 @@ final class Module extends AbstractCmsModule
      */
     private function getAttachedMappers()
     {
-        return array(
-            'Pages' => array(
+        return [
+            'Pages' => [
                 '/Pages/Storage/MySQL/SearchMapper'
-            ),
-            'News' => array(
+            ],
+            'News' => [
                 '/News/Storage/MySQL/SearchMapper'
-            ),
+            ],
             /*
-            'Shop' => array(
+            'Shop' => [
                 '/Shop/Storage/MySQL/SearchMapper'
-            ),
+            ],
             */
-            'Blog' => array(
+            'Blog' => [
                 '/Blog/Storage/MySQL/SearchMapper'
-            ),
-            'Announcement' => array(
+            ],
+            'Announcement' => [
                 '/Announcement/Storage/MySQL/SearchMapper'
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -78,10 +78,10 @@ final class Module extends AbstractCmsModule
             $searchMapper->append($this->getMapper($mapper));
         }
 
-        return array(
+        return [
             'siteService' => new SiteService(),
             'configManager' => $this->createConfigService(),
             'searchManager' => new SearchManager($searchMapper, $this->getWebPageManager())
-        );
+        ];
     }
 }

@@ -22,7 +22,7 @@ final class SearchMapper extends AbstractMapper implements SearchMapperInterface
      * 
      * @var array
      */
-    private $mappers = array();
+    private $mappers = [];
 
     const PARAM_QUERY_PLACEHOLDER = ':keyword';
 
@@ -59,7 +59,7 @@ final class SearchMapper extends AbstractMapper implements SearchMapperInterface
     /**
      * Appends query parts from registered mappers
      * 
-     * @param \Krystal\Db\Sql\QueryBuilderInterface $db Query builder
+     * @param \Krystal\Db\Sql\QueryBuilderInterface $qb Query builder
      * @return void
      */
     private function appendFromMappers(QueryBuilderInterface $qb)
@@ -101,9 +101,9 @@ final class SearchMapper extends AbstractMapper implements SearchMapperInterface
         $pdo = $this->db->getPdo();
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute(array(
+        $stmt->execute([
             self::PARAM_QUERY_PLACEHOLDER => '%'.$keyword.'%'
-        ));
+        ]);
 
         return $stmt;
     }

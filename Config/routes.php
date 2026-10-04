@@ -9,18 +9,18 @@
  * the license file that was distributed with this source code.
  */
 
-return array(
-    '/%s/module/search' => array(
+return [
+    '/%s/module/search' => [
         'controller' => 'Admin:Config@indexAction'
-    ),
+    ],
 
-    '/%s/module/search/save.ajax' => array(
+    '/%s/module/search/save.ajax' => [
         'controller' => 'Admin:Config@saveAction',
-        'disallow' => array('guest')
-    ),
+        'disallow' => ['guest']
+    ],
 
     // Site route itself
-    '/search' => array(
+    '/search' => [
         'controller' => 'Search@searchAction'
-    )
-);
+    ]
+];

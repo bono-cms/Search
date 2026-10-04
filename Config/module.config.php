@@ -4,17 +4,17 @@
  * Module configuration container
  */
 
-return array(
+return [
     'name' => 'Search',
     'description' => 'Search module allows you to easily enable search mechanism across another modules',
-    'menu' => array(
+    'menu' => [
         'name' => 'Search',
         'icon' => 'fas fa-search',
-        'items' => array(
-            array(
+        'items' => [
+            [
                 'route' => 'Search:Admin:Config@indexAction',
                 'name' => 'Configuration'
-            )
-        )
-    )
-);
+            ]
+        ]
+    ]
+];

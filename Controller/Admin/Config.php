@@ -9,8 +9,8 @@
 
 namespace Search\Controller\Admin;
 
+use Krystal\Validation\Validator;
 use Cms\Controller\Admin\AbstractConfigController;
-use Krystal\Validate\Pattern;
 
 final class Config extends AbstractConfigController
 {
@@ -27,10 +27,11 @@ final class Config extends AbstractConfigController
     /**
      * {@inheritDoc}
      */
-    protected function getValidationRules()
+    protected function configureValidator(Validator $validator)
     {
-        return [
-            'per_page_count' => new Pattern\PerPageCount(),
-        ];
+        $validator->field('config.per_page_count', 'Per page count')
+                  ->required()
+                  ->addRule('numeric')
+                  ->addRule('greaterthan', null, ['min' => 0]);
     }
 }
